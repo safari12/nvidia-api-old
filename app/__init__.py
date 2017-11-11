@@ -10,4 +10,7 @@ def create_app(config_name):
     from .hello import hello as hello_blueprint
     app.register_blueprint(hello_blueprint, url_prefix='/hello')
 
+    from .gpu import gpu as gpu_blueprint
+    app.register_blueprint(gpu_blueprint, url_prefix='/gpu')
+
     return app
