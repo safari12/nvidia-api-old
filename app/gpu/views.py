@@ -1,29 +1,9 @@
-import json
+from flask import jsonify
 
 from . import gpu
-from .models import GPU, Watt, Memory
+from .handlers import get_gpu_list
 
 
 @gpu.route('/')
 def index():
-    gpu_list = []
-
-    for i in range(5):
-        gpu_list.append(
-            GPU(
-                name='Geoforce 1070',
-                fan_speed=0.45,
-                temperature='45C',
-                volatile=0.99,
-                watt=Watt(
-                    usage=65,
-                    cap=124
-                ),
-                memory=Memory(
-                    used='1200MB',
-                    max='3400MB'
-                )
-            )
-        )
-
-    return json.dumps(gpu_list, default=lambda o: o.__dict__)
+    return jsonify([g.serialize() for g in get_gpu_list()])
