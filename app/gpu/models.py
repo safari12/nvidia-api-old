@@ -7,6 +7,22 @@ class GPU:
         self.watt = watt
         self.memory = memory
 
+    def serialize(self):
+        return {
+            'name': self.name,
+            'fan_speed': self.fan_speed,
+            'temperature': self.temperature,
+            'volatile': self.volatile,
+            'watt': {
+                'usage': self.watt.usage,
+                'cap': self.watt.cap
+            },
+            'memory': {
+                'used': self.memory.used,
+                'max': self.memory.max
+            }
+        }
+
 
 class Watt:
     def __init__(self, usage, cap):
