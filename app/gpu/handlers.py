@@ -1,15 +1,20 @@
 import csv
 
+from autologging import logged
+
 from . import commands
 from .models import GPU, Watt, Memory
 from .exceptions import GPUError
 
 
+@logged
 def get_gpu_list():
     try:
         data = commands.query()
         gpu_list = []
         reader = csv.reader(data.split("\n"), delimiter=',', skipinitialspace=True)
+
+        get_gpu_list._log.debug('data: {}'.format(data))
 
         for row in reader:
             if any(row):
@@ -31,5 +36,5 @@ def get_gpu_list():
         return gpu_list
 
     except Exception as e:
-        print(e)
+        get_gpu_list._log.error(e)
         raise GPUError()
