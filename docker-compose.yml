@@ -1,0 +1,8 @@
+version: '3'
+services:
+  nvidia-api:
+    build: .
+    image: nvidia-api
+    container_name: nvidia-api-app
+    ports:
+      - "8080:5000"
