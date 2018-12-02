@@ -1,9 +1,14 @@
-from distutils.core import setup
+from setuptools import setup, find_packages
 
 setup(
     name='nvidia-api',
     version='1.0.0',
-    packages=[''],
+    packages=find_packages(),
+    entry_points={
+        'console_scripts': [
+            'nvidia_api = app.__main__:main',
+        ],
+    },
     url='git@github.com:safari12/nvidia-api.git',
     license='MIT',
     author='Reza Safari',

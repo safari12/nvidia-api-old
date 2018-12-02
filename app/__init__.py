@@ -4,7 +4,7 @@ import sys
 
 from flask import Flask
 
-from config import app_config
+from app.config import app_config
 
 
 def setup_logging():
