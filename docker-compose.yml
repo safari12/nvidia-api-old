@@ -1,8 +1,14 @@
 version: '3'
 services:
-  nvidia-api:
-    build: .
+  api:
+    build: ./api
     image: nvidia-api
     container_name: nvidia-api-app
+  nginx:
+    build: ./nginx
+    image: nvidia-api-nginx
+    container_name: nvidia-api-nginx
     ports:
-      - "8080:5000"
+      - 80:80
+    depends_on:
+      - api
