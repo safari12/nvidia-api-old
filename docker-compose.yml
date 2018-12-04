@@ -7,7 +7,7 @@ services:
   nginx:
     build: ./nginx
     image: nvidia-api-nginx
-    container_name: nvidia-api-nginx
+    container_name: nvidia-api-nginx-app
     ports:
       - 80:80
     depends_on:

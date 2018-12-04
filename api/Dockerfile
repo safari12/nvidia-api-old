@@ -6,6 +6,7 @@ RUN apt-get -y clean && \
     apt-get -y install build-essential
 
 ENV APP /usr/src/app
+ENV FLASK_CONFIG production
 
 WORKDIR $APP
 
