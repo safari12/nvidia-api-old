@@ -13,6 +13,6 @@ EXPOSE 5000
 
 COPY . .
 
-RUN pip install -r requirements
+RUN pip install -r requirements.txt
 
 CMD ["uwsgi", "--ini", "uwsgi.ini"]
